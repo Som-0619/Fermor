@@ -1,6 +1,6 @@
 # Fermor — homepage
 
-A new homepage for [Fermor](https://fermor.in), free personal finance calculators built for India.
+A new homepage for [Fermor](https://fermor.in), free personal finance calculators built for India. - https://fermor-wine.vercel.app/
 
 **Live:** _add your Vercel URL here_
 
