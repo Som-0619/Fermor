@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: #BCD2D8; color: #16231D; }
+  :focus-visible { outline: 2px solid #2D5B4C; outline-offset: 3px; border-radius: 6px; }
+}
+
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+}
+
+/* Range input: thin track, filled with --fill, soft round thumb */
+.range {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 22px; background: transparent; cursor: pointer;
+}
+.range::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 999px;
+  background: linear-gradient(to right, #2D5B4C var(--fill), #D3DBD6 var(--fill));
+}
+.range::-moz-range-track { height: 4px; border-radius: 999px; background: #D3DBD6; }
+.range::-moz-range-progress { height: 4px; border-radius: 999px; background: #2D5B4C; }
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none; margin-top: -8px;
+  width: 20px; height: 20px; border-radius: 999px; background: #FAFBFA;
+  border: 1.5px solid #2D5B4C; box-shadow: 0 1px 2px rgba(22,35,29,.12);
+  transition: transform .2s cubic-bezier(.2,.8,.2,1);
+}
+.range::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 999px; background: #FAFBFA; border: 1.5px solid #2D5B4C;
+}
+.range:active::-webkit-slider-thumb { transform: scale(1.18); }
+.range:focus-visible { outline: none; }
+.range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(45,91,76,.2); }
+
+/* Faint graph-paper grid behind the hero, faded out at the edges */
+.grid-paper {
+  background-image:
+    linear-gradient(to right, rgba(22,35,29,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22,35,29,.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
